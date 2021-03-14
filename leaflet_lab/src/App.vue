@@ -1,19 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <l-map :zoom="zoom" :center="center" style="height: 500px; width: 100%">
+      <l-tile-layer :url="url" :attribution="attribution" />
+    </l-map>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { LMap, LTileLayer } from "vue2-leaflet";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    LMap,
+    LTileLayer,
+  },
+  data() {
+    return {
+      zoom: 11,
+      center: [47.31322, -1.319482],
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    };
+  },
+};
 </script>
 
 <style>
